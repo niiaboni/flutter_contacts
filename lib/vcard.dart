@@ -356,7 +356,7 @@ class VCardParser {
           contact.organizations.first.phoneticName = decode(content);
           break;
         case 'X-ABDATE':
-          var tempContact = Contact();
+          var tempContact = Contact(thumbnail = null, photo = null);
           final date = decode(content);
           final omitYear = params.any((p) => p.key == 'X-APPLE-OMIT-YEAR');
           _tryAddEvent(tempContact, date, EventLabel.birthday, '', omitYear);
