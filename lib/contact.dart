@@ -74,13 +74,13 @@ class Contact {
   String displayName;
 
   /// A low-resolution version of the [photo].
-  Uint8List? thumbnail;
+  Uint8List thumbnail;
 
   /// The full-resolution contact picture.
-  Uint8List? photo;
+  Uint8List photo;
 
   /// Returns the full-resolution photo if available, the thumbnail otherwise.
-  Uint8List? get photoOrThumbnail => photo ?? thumbnail;
+  Uint8List get photoOrThumbnail => photo ?? thumbnail;
 
   /// Whether the contact is starred (Android only).
   bool isStarred;
@@ -133,8 +133,8 @@ class Contact {
   Contact({
     this.id = '',
     this.displayName = '',
-    this.thumbnail,
-    this.photo,
+    required this.thumbnail,
+    required this.photo,
     this.isStarred = false,
     Name? name,
     List<Phone>? phones,
@@ -162,8 +162,8 @@ class Contact {
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
         id: (json['id'] as String?) ?? '',
         displayName: (json['displayName'] as String?) ?? '',
-        thumbnail: json['thumbnail'] as Uint8List?,
-        photo: json['photo'] as Uint8List?,
+        thumbnail: json['thumbnail'] as Uint8List,
+        photo: json['photo'] as Uint8List,
         isStarred: (json['isStarred'] as bool?) ?? false,
         name: Name.fromJson(Map<String, dynamic>.from(json['name'] ?? {})),
         phones: ((json['phones'] as List?) ?? [])
