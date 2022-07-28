@@ -339,7 +339,7 @@ class Contact {
   }
 
   factory Contact.fromVCard(String vCard) {
-    var c = Contact();
+    var c = Contact(thumbnail = null, photo = null);
     VCardParser().parse(vCard, c);
     return c;
   }
